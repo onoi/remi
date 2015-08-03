@@ -18,12 +18,31 @@ class FilteredRecord {
 	protected $recordFields = array();
 
 	/**
+	 * @var array
+	 */
+	private $redactedFields = array();
+
+	/**
+	 * @since 0.1
+	 *
+	 * @param array $redactedFields
+	 */
+	public function setRedactedFields( array $redactedFields ) {
+		$this->redactedFields = array_flip( $redactedFields );
+	}
+
+	/**
 	 * @since 0.1
 	 *
 	 * @param string $key
 	 * @param mixed $value
 	 */
 	public function set( $key, $value ) {
+
+		if ( isset( $this->redactedFields[$key] ) ) {
+			return null;
+		}
+
 		$this->recordFields[$key] = $value;
 	}
 
@@ -34,6 +53,10 @@ class FilteredRecord {
 	 * @param mixed $value
 	 */
 	public function append( $key, $value ) {
+
+		if ( isset( $this->redactedFields[$key] ) ) {
+			return null;
+		}
 
 		if ( !$this->has( $key ) ) {
 			$this->recordFields[$key] = array();

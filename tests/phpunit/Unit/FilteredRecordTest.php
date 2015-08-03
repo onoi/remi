@@ -67,6 +67,28 @@ class FilteredRecordTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testRedactedFields() {
+
+		$instance = new FilteredRecord();
+		$instance->setRedactedFields( array( 'bar' ) );
+
+		$instance->set( 'bar', 42 );
+
+		$this->assertFalse(
+			$instance->has( 'bar' )
+		);
+
+		$instance->append( 'bar', 'foobar' );
+
+		$this->assertFalse(
+			$instance->has( 'bar' )
+		);
+
+		$this->assertEmpty(
+			$instance->getRecordFields()
+		);
+	}
+
 	public function testUnknownRecordKeyFieldThrowsException() {
 
 		$instance = new FilteredRecord();

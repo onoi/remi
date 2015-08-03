@@ -51,8 +51,11 @@ $crossRefFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newCro
 
 $crossRefFilteredHttpResponseParser->doParseFor( '10.1126/science.1152662' );
 
+$filteredRecord = new FilteredRecord();
+$filteredRecord->setRedactedFields( array( 'pages', 'abstract' ) );
+
 $pubMedFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newNcbiPubMedFilteredHttpResponseParser(
-	new FilteredRecord()
+	$filteredRecord
 )
 
 $pubMedFilteredHttpResponseParser->doParseFor( '19782018' );
@@ -63,6 +66,8 @@ simple `array` record for parsed elements from a REST response.
 `FilteredHttpResponseParser::doParseFor` is not expected to make any input validation (in terms of format or
 range) for the requested response therefore the implementing class is responsible for an appropriate
 validation process.
+
+`FilteredRecord::setRedactedFields` can be used to remove selected fields from the record.
 
 It is further possible to invoke a `CachedCurlRequest` to avoid repeated requests to the same REST API url.
 
