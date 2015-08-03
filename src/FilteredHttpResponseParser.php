@@ -41,7 +41,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	/**
 	 * @since 0.1
 	 *
-	 * @param string|array $message
+	 * @param string[] $message
 	 */
 	public function addMessage( $message ) {
 		$this->messages[] = $message;
@@ -50,7 +50,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	/**
 	 * @since 0.1
 	 *
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function getMessages() {
 		return $this->messages;
@@ -59,7 +59,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	/**
 	 * @since 0.1
 	 *
-	 * @return Record
+	 * {@inheritDoc}
 	 */
 	public function getRecord() {
 		return $this->record;
@@ -68,7 +68,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	/**
 	 * @since 0.1
 	 *
-	 * @return boolean
+	 * {@inheritDoc}
 	 */
 	public function usedCache() {
 		return method_exists( $this->httpRequest, 'isCached' ) ? $this->httpRequest->isCached() : false;
@@ -77,16 +77,14 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	/**
 	 * @since 0.1
 	 *
-	 * @param string $query
+	 * {@inheritDoc}
 	 */
 	abstract public function doParseFor( $query );
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param string $query
-	 *
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	abstract public function getRawResponse( $query );
 

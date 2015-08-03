@@ -8,14 +8,14 @@
 [![Dependency Status](https://www.versioneye.com/php/onoi:remi/badge.png)](https://www.versioneye.com/php/onoi:remi)
 
 This library is intended to generate a filtered record from a REST/Http metadata provider response
-(REST miner a.k.a. `remi`) which was part of the [Semantic Cite][scite] code base and is now being
-deployed as independent library. Supported providers are:
+(to mine a REST response a.k.a. `remi`). The code base was part of [Semantic Cite][scite] and
+is now being deployed as independent library. Supported providers are:
 
-- CrossRef
+- CrossRef (DOI)
 - VIAF
 - PubMed (PMID and PMCID)
 - OCLC (WorldCat)
-- OpenLibrary
+- OpenLibrary (OLID, ISBN)
 
 ## Requirements
 

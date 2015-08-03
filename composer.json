@@ -1,7 +1,7 @@
 {
 	"name": "onoi/remi",
 	"type": "library",
-	"description": "A small library to mine (parse) REST responses from selected metatdata provider",
+	"description": "A small library to mine (parse) REST responses from selected metatdata providers",
 	"keywords": [
 		"rest"
 	],
