@@ -15,7 +15,7 @@ interface ResponseParser {
 	 *
 	 * @return FilteredRecord
 	 */
-	public function getRecord();
+	public function getFilteredRecord();
 
 	/**
 	 * @since 0.1
@@ -29,22 +29,22 @@ interface ResponseParser {
 	 *
 	 * @return boolean
 	 */
-	public function usedCache();
+	public function usesCache();
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param string $query
+	 * @param string $id
 	 */
-	public function doParseFor( $query );
+	public function doFilterResponseFor( $id );
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param string $query
+	 * @param string $id
 	 *
 	 * @return string
 	 */
-	public function getRawResponse( $query );
+	public function getRawResponse( $id );
 
 }

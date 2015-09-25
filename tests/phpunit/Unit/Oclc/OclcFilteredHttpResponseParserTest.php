@@ -50,7 +50,7 @@ class OclcFilteredHttpResponseParserTest extends \PHPUnit_Framework_TestCase {
 			$filteredRecord
 		);
 
-		$instance->doParseFor( 'foo' );
+		$instance->doFilterResponseFor( 'foo' );
 
 		$this->assertEquals(
 			array( array(
@@ -81,7 +81,7 @@ class OclcFilteredHttpResponseParserTest extends \PHPUnit_Framework_TestCase {
 			$filteredRecord
 		);
 
-		$instance->doParseFor( 'foo' );
+		$instance->doFilterResponseFor( 'foo' );
 
 		$this->assertEquals(
 			array( array(

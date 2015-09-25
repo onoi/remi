@@ -13,15 +13,15 @@ class NullResponseParser implements ResponseParser {
 	/**
 	 * @var FilteredRecord
 	 */
-	private $record;
+	private $filteredRecord;
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param FilteredRecord $record
+	 * @param FilteredRecord $filteredRecord
 	 */
-	public function __construct( FilteredRecord $record ) {
-		$this->record = $record;
+	public function __construct( FilteredRecord $filteredRecord ) {
+		$this->filteredRecord = $filteredRecord;
 	}
 
 	/**
@@ -29,8 +29,8 @@ class NullResponseParser implements ResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRecord() {
-		return $this->record;
+	public function getFilteredRecord() {
+		return $this->filteredRecord;
 	}
 
 	/**
@@ -47,7 +47,7 @@ class NullResponseParser implements ResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function usedCache() {
+	public function usesCache() {
 		return false;
 	}
 
@@ -56,7 +56,7 @@ class NullResponseParser implements ResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doParseFor( $query ) {}
+	public function doFilterResponseFor( $query ) {}
 
 	/**
 	 * @since 0.1

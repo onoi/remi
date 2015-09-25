@@ -37,11 +37,11 @@ class NullResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(
 			$filteredRecord,
-			$instance->getRecord()
+			$instance->getFilteredRecord()
 		);
 
 		$this->assertFalse(
-			$instance->usedCache()
+			$instance->usesCache()
 		);
 
 		$this->assertEmpty(
@@ -49,7 +49,7 @@ class NullResponseParserTest extends \PHPUnit_Framework_TestCase {
 		);
 
 		$this->assertNull(
-			$instance->doParseFor( 42 )
+			$instance->doFilterResponseFor( 42 )
 		);
 
 		$this->assertEmpty(

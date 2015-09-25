@@ -20,7 +20,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	/**
 	 * @var FilteredRecord
 	 */
-	protected $record;
+	protected $filteredRecord;
 
 	/**
 	 * @var array
@@ -31,11 +31,11 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	 * @since 0.1
 	 *
 	 * @param HttpRequest $httpRequest
-	 * @param FilteredRecord $record
+	 * @param FilteredRecord $filteredRecord
 	 */
-	public function __construct( HttpRequest $httpRequest, FilteredRecord $record ) {
+	public function __construct( HttpRequest $httpRequest, FilteredRecord $filteredRecord ) {
 		$this->httpRequest = $httpRequest;
-		$this->record = $record;
+		$this->filteredRecord = $filteredRecord;
 	}
 
 	/**
@@ -61,8 +61,8 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRecord() {
-		return $this->record;
+	public function getFilteredRecord() {
+		return $this->filteredRecord;
 	}
 
 	/**
@@ -70,7 +70,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function usedCache() {
+	public function usesCache() {
 		return method_exists( $this->httpRequest, 'isCached' ) ? $this->httpRequest->isCached() : false;
 	}
 
@@ -79,7 +79,7 @@ abstract class FilteredHttpResponseParser implements ResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	abstract public function doParseFor( $query );
+	abstract public function doFilterResponseFor( $query );
 
 	/**
 	 * @since 0.1

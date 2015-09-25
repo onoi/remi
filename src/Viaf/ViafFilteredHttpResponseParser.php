@@ -33,7 +33,7 @@ class ViafFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doParseFor( $viafID ) {
+	public function doFilterResponseFor( $viafID ) {
 
 		$xml = $this->requestResponseFor( $viafID );
 
@@ -63,16 +63,16 @@ class ViafFilteredHttpResponseParser extends FilteredHttpResponseParser {
 			return $this->addMessage( array( 'onoi-remi-parser-no-id-match', $viafID ) );
 		}
 
-		$this->getRecord()->set( 'viaf', $viafID );
+		$this->filteredRecord->set( 'viaf', $viafID );
 
 		foreach ( $dom->getElementsByTagName( 'nameType' ) as $item ) {
-			$this->getRecord()->set( 'type', $item->nodeValue );
+			$this->filteredRecord->set( 'type', $item->nodeValue );
 		}
 
 		foreach ( $dom->getElementsByTagName( 'sources' ) as $item ) {
 			foreach ( $item->getElementsByTagName( 'source' ) as $i ) {
 				list( $key, $value ) = explode( '|', $i->nodeValue, 2 );
-				$this->getRecord()->set( strtolower( $key ), str_replace( ' ' ,'', $value ) );
+				$this->filteredRecord->set( strtolower( $key ), str_replace( ' ' ,'', $value ) );
 			}
 		}
 
@@ -81,7 +81,7 @@ class ViafFilteredHttpResponseParser extends FilteredHttpResponseParser {
 		foreach ( $dom->getElementsByTagName( 'data' ) as $item ) {
 
 			foreach ( $item->getElementsByTagName( 'text' ) as $i ) {
-				$this->getRecord()->set( 'name', str_replace( '.', '', $i->nodeValue ) );
+				$this->filteredRecord->set( 'name', str_replace( '.', '', $i->nodeValue ) );
 				break;
 			}
 

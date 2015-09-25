@@ -51,11 +51,11 @@ class FilteredHttpResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(
 			$filteredRecord,
-			$instance->getRecord()
+			$instance->getFilteredRecord()
 		);
 
 		$this->assertFalse(
-			$instance->usedCache()
+			$instance->usesCache()
 		);
 
 		$this->assertEmpty(

@@ -32,7 +32,7 @@ class CrossRefFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doParseFor( $doi ) {
+	public function doFilterResponseFor( $doi ) {
 
 		$json = json_decode(
 			$this->requestResponseFor( $doi ),
@@ -53,7 +53,7 @@ class CrossRefFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	private function doProcessCiteproc( $json ) {
 
 		$crossRefCiteprocJsonProcessor = new CrossRefCiteprocJsonProcessor(
-			$this->getRecord()
+			$this->getFilteredRecord()
 		);
 
 		$crossRefCiteprocJsonProcessor->doProcess( $json );

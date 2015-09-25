@@ -32,7 +32,7 @@ class OclcFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doParseFor( $oclcID ) {
+	public function doFilterResponseFor( $oclcID ) {
 
 		$text = $this->requestResponseFor( $oclcID );
 
@@ -52,7 +52,7 @@ class OclcFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	private function doProcessJsonLd( $oclcID, $jsonld ) {
 
 		$simpleOclcJsonLdGraphProcessor = new SimpleOclcJsonLdGraphProcessor(
-			$this->getRecord()
+			$this->filteredRecord
 		);
 
 		$simpleOclcJsonLdGraphProcessor->doProcess( $oclcID, $jsonld );

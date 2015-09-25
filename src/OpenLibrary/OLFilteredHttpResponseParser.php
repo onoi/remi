@@ -32,7 +32,7 @@ class OLFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doParseFor( $olID ) {
+	public function doFilterResponseFor( $olID ) {
 
 		$text = $this->requestResponseFor( $olID );
 
@@ -55,7 +55,7 @@ class OLFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	private function doProcessJson( $json ) {
 
 		$olBooksAPIJsonProcessor = new OLBooksAPIJsonProcessor(
-			$this->getRecord()
+			$this->filteredRecord
 		);
 
 		$olBooksAPIJsonProcessor->doProcess( $json );

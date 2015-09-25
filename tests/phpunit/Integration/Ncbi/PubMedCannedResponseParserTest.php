@@ -40,11 +40,11 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 			$instance->getRawResponse( $id )
 		);
 
-		$instance->doParseFor( $id );
+		$instance->doFilterResponseFor( $id );
 
 		$this->assertEquals(
 			$expected,
-			$instance->getRecord()->getRecordFields()
+			$instance->getFilteredRecord()->getRecordFields()
 		);
 	}
 
@@ -73,11 +73,11 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 			$instance->getRawResponse( $id )
 		);
 
-		$instance->doParseFor( $id );
+		$instance->doFilterResponseFor( $id );
 
 		$this->assertEquals(
 			$expected,
-			$instance->getRecord()->getRecordFields()
+			$instance->getFilteredRecord()->getRecordFields()
 		);
 	}
 

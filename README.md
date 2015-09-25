@@ -19,7 +19,7 @@ is now being deployed as independent library. Supported providers are:
 
 ## Requirements
 
-PHP 5.3 / HHVM 3.3 or later
+PHP 5.3 / HHVM 3.5 or later
 
 ## Installation
 
@@ -28,7 +28,7 @@ The recommended installation method for this library is to add the dependency to
 ```json
 {
 	"require": {
-		"onoi/remi": "~0.1"
+		"onoi/remi": "~0.2"
 	}
 }
 ```
@@ -49,7 +49,7 @@ $crossRefFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newCro
 	new FilteredRecord()
 )
 
-$crossRefFilteredHttpResponseParser->doParseFor( '10.1126/science.1152662' );
+$crossRefFilteredHttpResponseParser->doFilterResponseFor( '10.1126/science.1152662' );
 
 $filteredRecord = new FilteredRecord();
 $filteredRecord->setRedactedFields( array( 'pages', 'abstract' ) );
@@ -58,13 +58,13 @@ $pubMedFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newNcbiP
 	$filteredRecord
 )
 
-$pubMedFilteredHttpResponseParser->doParseFor( '19782018' );
+$pubMedFilteredHttpResponseParser->doFilterResponseFor( '19782018' );
 ```
 The `FilteredHttpResponseParser` (implementing the `ResponseParser` interface) returns a
-simple `array` record for parsed elements from a REST response.
+simple `array` filtered from a REST response.
 
-`FilteredHttpResponseParser::doParseFor` is not expected to make any input validation (in terms of format or
-range) for the requested response therefore the implementing class is responsible for an appropriate
+`FilteredHttpResponseParser::doFilterResponseFor` is not expected to make any input validation (in terms of
+format or range) for the requested response therefore the implementing class is responsible for an appropriate
 validation process.
 
 `FilteredRecord::setRedactedFields` can be used to remove selected fields from the record.
@@ -85,6 +85,8 @@ The library provides unit tests that covers the core-functionality normally run 
 
 ### Release notes
 
+- 0.2 (2015-09-25)
+ - Changed `ResponseParser` interface to clarify method names
 - 0.1 (2015-08-03) Initial release
  - Added `ResponseParser` interface
  - Added `FilteredHttpResponseParserFactory` to provide access to CrossRef, VIAF, PubMed, OCLC, and OpenLibrary REST API

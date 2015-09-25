@@ -50,7 +50,7 @@ class NcbiPubMedFilteredHttpResponseParserTest extends \PHPUnit_Framework_TestCa
 			$filteredRecord
 		);
 
-		$instance->doParseFor( 'foo' );
+		$instance->doFilterResponseFor( 'foo' );
 
 		$this->assertEquals(
 			array( array(
@@ -81,7 +81,7 @@ class NcbiPubMedFilteredHttpResponseParserTest extends \PHPUnit_Framework_TestCa
 			$filteredRecord
 		);
 
-		$instance->doParseFor( 'foo' );
+		$instance->doFilterResponseFor( 'foo' );
 
 		$this->assertEquals(
 			array( array(

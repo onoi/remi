@@ -28,7 +28,7 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 */
 	public function getRawResponse( $id ) {
 
-		$db = $this->getRecord()->get( 'ncbi-dbtype' );
+		$db = $this->filteredRecord->get( 'ncbi-dbtype' );
 
 		return $this->requestSummaryResponseFor( $id, $db ) . $this->requestAbstractResponseFor( $id, $db );
 	}
@@ -38,9 +38,9 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doParseFor( $id ) {
+	public function doFilterResponseFor( $id ) {
 
-		$db = $this->getRecord()->get( 'ncbi-dbtype' );
+		$db = $this->filteredRecord->get( 'ncbi-dbtype' );
 
 		$text = $this->requestSummaryResponseFor( $id, $db );
 
@@ -78,49 +78,49 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 
 		if ( isset( $record['pubtype'] ) ) {
 			foreach ( $record['pubtype'] as $type ) {
-				$this->getRecord()->append( 'type', $type );
+				$this->filteredRecord->append( 'type', $type );
 			}
 		}
 
 		foreach ( $record['articleids'] as $articleids ) {
 
 			if ( $articleids['idtype'] === 'doi' ) {
-				$this->getRecord()->set( 'doi', $articleids['value'] );
+				$this->filteredRecord->set( 'doi', $articleids['value'] );
 			}
 
 			if ( $articleids['idtype'] === 'pmid' ) {
-				$this->getRecord()->set( 'pmid', $articleids['value'] );
+				$this->filteredRecord->set( 'pmid', $articleids['value'] );
 			}
 
 			if ( $articleids['idtype'] === 'pubmed' ) {
-				$this->getRecord()->set( 'pmid', $articleids['value'] );
+				$this->filteredRecord->set( 'pmid', $articleids['value'] );
 			}
 
 			if ( $articleids['idtype'] === 'pmcid' && $db === 'pmc' ) {
-				$this->getRecord()->set( 'pmcid', $articleids['value'] );
+				$this->filteredRecord->set( 'pmcid', $articleids['value'] );
 			}
 
 			if ( $articleids['idtype'] === 'pmc' && $db === 'pubmed' ) {
-				$this->getRecord()->set( 'pmcid', $articleids['value'] );
+				$this->filteredRecord->set( 'pmcid', $articleids['value'] );
 			}
 		}
 
 		foreach ( $record['authors'] as $author ) {
-			$this->getRecord()->append( 'author', $author['name'] );
+			$this->filteredRecord->append( 'author', $author['name'] );
 		}
 
-		$this->getRecord()->set( 'title', $record['title'] );
-		$this->getRecord()->set( 'journal', $record['fulljournalname'] );
-		$this->getRecord()->set( 'pubdate', $record['pubdate'] );
-		$this->getRecord()->set( 'volume', $record['volume'] );
-		$this->getRecord()->set( 'issue', $record['issue'] );
-		$this->getRecord()->set( 'pages', $record['pages'] );
+		$this->filteredRecord->set( 'title', $record['title'] );
+		$this->filteredRecord->set( 'journal', $record['fulljournalname'] );
+		$this->filteredRecord->set( 'pubdate', $record['pubdate'] );
+		$this->filteredRecord->set( 'volume', $record['volume'] );
+		$this->filteredRecord->set( 'issue', $record['issue'] );
+		$this->filteredRecord->set( 'pages', $record['pages'] );
 	}
 
 	private function doProcessAbstract( $xml ) {
 
 		$ncbiEntrezAbstractXMLProcessor = new NcbiEntrezAbstractXMLProcessor(
-			$this->getRecord()
+			$this->filteredRecord
 		);
 
 		$ncbiEntrezAbstractXMLProcessor->doProcess( $xml );
