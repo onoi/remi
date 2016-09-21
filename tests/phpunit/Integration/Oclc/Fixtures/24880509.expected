@@ -1,1 +1,22 @@
-a:8:{s:4:"viaf";a:1:{i:0;s:7:"4929997";}s:6:"author";a:1:{i:0;s:11:"John Fowles";}s:4:"isbn";a:2:{i:0;s:13:"9789633070222";i:1;s:10:"9633070228";}s:3:"url";s:37:"http://www.worldcat.org/oclc/24880509";s:4:"type";a:2:{i:0;s:19:"schema:CreativeWork";i:1;s:11:"schema:Book";}s:7:"pubdate";s:4:"1983";s:5:"genre";a:1:{i:0;s:7:"Fiction";}s:5:"title";s:38:"A francia hadnagy szeretője : regény";}
+{
+    "viaf": [
+        "4929997"
+    ],
+    "author": [
+        "John Fowles"
+    ],
+    "isbn": [
+        "9789633070222",
+        "9633070228"
+    ],
+    "url": "http://www.worldcat.org/oclc/24880509",
+    "type": [
+        "schema:CreativeWork",
+        "schema:Book"
+    ],
+    "pubdate": "1983",
+    "genre": [
+        "Fiction"
+    ],
+    "title": "A francia hadnagy szeretője : regény"
+}

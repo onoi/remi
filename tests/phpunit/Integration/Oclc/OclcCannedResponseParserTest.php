@@ -22,10 +22,6 @@ class OclcCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$contents = file_get_contents( $httpRequestFile );
 
-		$expected = unserialize(
-			str_replace( "\r\n", "\n", file_get_contents( $expectedResultFile ) )
-		);
-
 		$httpRequest = $this->getMockBuilder( '\Onoi\HttpRequest\HttpRequest' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -53,9 +49,9 @@ class OclcCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$instance->doFilterResponseFor( $id );
 
-		$this->assertEquals(
-			$expected,
-			$instance->getFilteredRecord()->getRecordFields()
+		$this->assertJsonStringEqualsJsonFile(
+			$expectedResultFile,
+			$instance->getFilteredRecord()->asJsonString()
 		);
 	}
 

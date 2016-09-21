@@ -42,9 +42,9 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$instance->doFilterResponseFor( $id );
 
-		$this->assertEquals(
-			$expected,
-			$instance->getFilteredRecord()->getRecordFields()
+		$this->assertJsonStringEqualsJsonFile(
+			$expectedResultFile,
+			$instance->getFilteredRecord()->asJsonString()
 		);
 	}
 
@@ -75,9 +75,9 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$instance->doFilterResponseFor( $id );
 
-		$this->assertEquals(
-			$expected,
-			$instance->getFilteredRecord()->getRecordFields()
+		$this->assertJsonStringEqualsJsonFile(
+			$expectedResultFile,
+			$instance->getFilteredRecord()->asJsonString()
 		);
 	}
 
@@ -87,10 +87,6 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$jsonContents = file_get_contents( $httpJsonRequestFile );
 		$xmlContents = file_get_contents( $httpXmlRequestFile );
-
-		$expected = unserialize(
-			str_replace( "\r\n", "\n", file_get_contents( $expectedResultFile ) )
-		);
 
 		$httpRequest = $this->getMockBuilder( '\Onoi\HttpRequest\HttpRequest' )
 			->disableOriginalConstructor()
@@ -106,7 +102,7 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 			->method( 'getLastError' )
 			->will( $this->returnValue( '' ) );
 
-		return array( $id, $httpRequest, $jsonContents, $xmlContents, $expected );
+		return array( $id, $httpRequest, $jsonContents, $xmlContents, $expectedResultFile );
 	}
 
 	public function pmidFileProvider() {
