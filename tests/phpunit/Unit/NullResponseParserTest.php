@@ -52,9 +52,18 @@ class NullResponseParserTest extends \PHPUnit_Framework_TestCase {
 			$instance->doFilterResponseById( 42 )
 		);
 
+		$this->assertNull(
+			$instance->doFilterResponseFor( 42 )
+		);
+
+		$this->assertEmpty(
+			$instance->getRawResponse( 42 )
+		);
+
 		$this->assertEmpty(
 			$instance->getRawResponseById( 42 )
 		);
+
 	}
 
 }
