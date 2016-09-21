@@ -85,6 +85,8 @@ The library provides unit tests that covers the core-functionality normally run 
 
 ### Release notes
 
+- 0.3 (2016-09-21)
+ - Added some additional fields
 - 0.2 (2015-09-25)
  - Changed `ResponseParser` interface to clarify method names
 - 0.1 (2015-08-03) Initial release
