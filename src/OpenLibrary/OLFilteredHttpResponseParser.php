@@ -50,6 +50,8 @@ class OLFilteredHttpResponseParser extends FilteredHttpResponseParser {
 		}
 
 		$this->doProcessJson( $json );
+
+		$this->filteredRecord->set( 'retrieved-from', 'https://openlibrary.org/' );
 	}
 
 	private function doProcessJson( $json ) {

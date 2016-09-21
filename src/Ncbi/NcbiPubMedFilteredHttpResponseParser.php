@@ -115,6 +115,8 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 		$this->filteredRecord->set( 'volume', $record['volume'] );
 		$this->filteredRecord->set( 'issue', $record['issue'] );
 		$this->filteredRecord->set( 'pages', $record['pages'] );
+
+		$this->filteredRecord->set( 'retrieved-from', 'http://www.ncbi.nlm.nih.gov/' );
 	}
 
 	private function doProcessAbstract( $xml ) {

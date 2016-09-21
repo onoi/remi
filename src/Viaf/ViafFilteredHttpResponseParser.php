@@ -49,6 +49,8 @@ class ViafFilteredHttpResponseParser extends FilteredHttpResponseParser {
 		$dom->loadXml( $xml );
 
 		$this->doProcessDom( $dom, $viafID );
+
+		$this->filteredRecord->set( 'retrieved-from', 'http://viaf.org/' );
 	}
 
 	private function doProcessDom( $dom, $viafID ) {
