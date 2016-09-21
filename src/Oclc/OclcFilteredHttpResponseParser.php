@@ -23,7 +23,7 @@ class OclcFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRawResponse( $oclcID ) {
+	public function getRawResponseById( $oclcID ) {
 		return $this->requestResponseFor( $oclcID );
 	}
 
@@ -32,7 +32,7 @@ class OclcFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doFilterResponseFor( $oclcID ) {
+	public function doFilterResponseById( $oclcID ) {
 
 		$text = $this->requestResponseFor( $oclcID );
 

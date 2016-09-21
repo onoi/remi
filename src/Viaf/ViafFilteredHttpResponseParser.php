@@ -24,7 +24,7 @@ class ViafFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRawResponse( $viafID ) {
+	public function getRawResponseById( $viafID ) {
 		return $this->requestResponseFor( $viafID );
 	}
 
@@ -33,7 +33,7 @@ class ViafFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doFilterResponseFor( $viafID ) {
+	public function doFilterResponseById( $viafID ) {
 
 		$xml = $this->requestResponseFor( $viafID );
 

@@ -26,7 +26,7 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRawResponse( $id ) {
+	public function getRawResponseById( $id ) {
 
 		$db = $this->filteredRecord->get( 'ncbi-dbtype' );
 
@@ -38,7 +38,7 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doFilterResponseFor( $id ) {
+	public function doFilterResponseById( $id ) {
 
 		$db = $this->filteredRecord->get( 'ncbi-dbtype' );
 

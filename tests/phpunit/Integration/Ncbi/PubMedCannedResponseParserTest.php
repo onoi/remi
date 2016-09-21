@@ -37,10 +37,10 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(
 			$jsonContents . $xmlContents,
-			$instance->getRawResponse( $id )
+			$instance->getRawResponseById( $id )
 		);
 
-		$instance->doFilterResponseFor( $id );
+		$instance->doFilterResponseById( $id );
 
 		$this->assertJsonStringEqualsJsonFile(
 			$expectedResultFile,
@@ -70,10 +70,10 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(
 			$jsonContents . $xmlContents,
-			$instance->getRawResponse( $id )
+			$instance->getRawResponseById( $id )
 		);
 
-		$instance->doFilterResponseFor( $id );
+		$instance->doFilterResponseById( $id );
 
 		$this->assertJsonStringEqualsJsonFile(
 			$expectedResultFile,
