@@ -29,6 +29,7 @@ interface ResponseParser {
 	 *
 	 * @return boolean
 	 */
+	//public function isFromCache();
 	public function usesCache();
 
 	/**
@@ -36,6 +37,7 @@ interface ResponseParser {
 	 *
 	 * @param string $id
 	 */
+	//public function doFilterResponseById( $id );
 	public function doFilterResponseFor( $id );
 
 	/**
@@ -45,6 +47,7 @@ interface ResponseParser {
 	 *
 	 * @return string
 	 */
+	//public function getRawResponseById( $id );
 	public function getRawResponse( $id );
 
 }

@@ -23,7 +23,7 @@ class CrossRefFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRawResponse( $doi ) {
+	public function getRawResponseById( $doi ) {
 		return $this->requestResponseFor( $doi );
 	}
 
@@ -32,7 +32,7 @@ class CrossRefFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doFilterResponseFor( $doi ) {
+	public function doFilterResponseById( $doi ) {
 
 		$json = json_decode(
 			$this->requestResponseFor( $doi ),

@@ -44,10 +44,10 @@ class CrossRefCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(
 			$contents,
-			$instance->getRawResponse( $id )
+			$instance->getRawResponseById( $id )
 		);
 
-		$instance->doFilterResponseFor( $id );
+		$instance->doFilterResponseById( $id );
 
 		$this->assertJsonStringEqualsJsonFile(
 			$expectedResultFile,

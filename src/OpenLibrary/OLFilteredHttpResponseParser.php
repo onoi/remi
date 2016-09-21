@@ -23,7 +23,7 @@ class OLFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function getRawResponse( $olID ) {
+	public function getRawResponseById( $olID ) {
 		return $this->requestResponseFor( $olID );
 	}
 
@@ -32,7 +32,7 @@ class OLFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 *
 	 * {@inheritDoc}
 	 */
-	public function doFilterResponseFor( $olID ) {
+	public function doFilterResponseById( $olID ) {
 
 		$text = $this->requestResponseFor( $olID );
 

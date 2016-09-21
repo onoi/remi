@@ -49,7 +49,7 @@ $crossRefFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newCro
 	new FilteredRecord()
 )
 
-$crossRefFilteredHttpResponseParser->doFilterResponseFor( '10.1126/science.1152662' );
+$crossRefFilteredHttpResponseParser->doFilterResponseById( '10.1126/science.1152662' );
 
 $filteredRecord = new FilteredRecord();
 $filteredRecord->setRedactedFields( array( 'pages', 'abstract' ) );
@@ -58,12 +58,12 @@ $pubMedFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newNcbiP
 	$filteredRecord
 )
 
-$pubMedFilteredHttpResponseParser->doFilterResponseFor( '19782018' );
+$pubMedFilteredHttpResponseParser->doFilterResponseById( '19782018' );
 ```
 The `FilteredHttpResponseParser` (implementing the `ResponseParser` interface) returns a
 simple `array` filtered from a REST response.
 
-`FilteredHttpResponseParser::doFilterResponseFor` is not expected to make any input validation (in terms of
+`FilteredHttpResponseParser::doFilterResponseById` is not expected to make any input validation (in terms of
 format or range) for the requested response therefore the implementing class is responsible for an appropriate
 validation process.
 

@@ -52,11 +52,36 @@ class NullResponseParser implements ResponseParser {
 	}
 
 	/**
+	 * @since 0.3
+	 *
+	 * {@inheritDoc}
+	 */
+	public function isFromCache() {
+		return false;
+	}
+
+	/**
+	 * @since 0.3
+	 *
+	 * {@inheritDoc}
+	 */
+	public function doFilterResponseById( $query ) {}
+
+	/**
 	 * @since 0.1
 	 *
 	 * {@inheritDoc}
 	 */
 	public function doFilterResponseFor( $query ) {}
+
+	/**
+	 * @since 0.3
+	 *
+	 * {@inheritDoc}
+	 */
+	public function getRawResponseById( $query ) {
+		return '';
+	}
 
 	/**
 	 * @since 0.1
