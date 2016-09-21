@@ -56,6 +56,13 @@ class NcbiEntrezAbstractXMLProcessor {
 		foreach ( $domDocument->getElementsByTagName( 'MeshHeading' ) as $item ) {
 			$this->filteredRecord->append( 'subject', preg_replace( '#\s{2,}#', ' ', trim( $item->nodeValue ) ) );
 		}
+
+		// http://www.library.illinois.edu/biotech/j-abbrev.html notes:
+		// "... database uses the "standard abbreviation", as defined by ISSN
+		// and used also by BIOSIS and CASSI ..."
+		foreach ( $domDocument->getElementsByTagName( 'ISOAbbreviation' ) as $item ) {
+			$this->filteredRecord->append( 'iso-abbreviation', trim( $item->nodeValue ) );
+		}
 	}
 
 	private function findElementsForPubMedCentral( DOMDocument $domDocument ) {
