@@ -48,6 +48,8 @@ class CrossRefFilteredHttpResponseParser extends FilteredHttpResponseParser {
 		}
 
 		$this->doProcessCiteproc( $json );
+
+		$this->filteredRecord->set( 'retrieved-from', self::CROSSREF_CONTENT_API );
 	}
 
 	private function doProcessCiteproc( $json ) {

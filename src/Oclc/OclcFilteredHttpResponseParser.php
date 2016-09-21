@@ -47,6 +47,8 @@ class OclcFilteredHttpResponseParser extends FilteredHttpResponseParser {
 		}
 
 		$this->doProcessJsonLd( $oclcID, $jsonld );
+
+		$this->filteredRecord->set( 'retrieved-from', 'http://www.worldcat.org/' );
 	}
 
 	private function doProcessJsonLd( $oclcID, $jsonld ) {
