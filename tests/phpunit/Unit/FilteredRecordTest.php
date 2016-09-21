@@ -65,6 +65,11 @@ class FilteredRecordTest extends \PHPUnit_Framework_TestCase {
 			),
 			$instance->getRecordFields()
 		);
+
+		$this->assertInternalType(
+			'string',
+			$instance->asJsonString()
+		);
 	}
 
 	public function testRedactedFields() {

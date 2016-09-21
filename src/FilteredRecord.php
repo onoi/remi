@@ -115,4 +115,15 @@ class FilteredRecord {
 		return $this->recordFields;
 	}
 
+	/**
+	 * @since 0.2
+	 *
+	 * @param integer $flags
+	 *
+	 * @return string
+	 */
+	public function asJsonString( $flags = 0 ) {
+		return json_encode( $this->recordFields, $flags );
+	}
+
 }
