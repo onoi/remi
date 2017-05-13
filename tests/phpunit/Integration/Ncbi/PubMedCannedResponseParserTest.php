@@ -139,6 +139,13 @@ class PubMedCannedResponseParserTest extends \PHPUnit_Framework_TestCase {
 			$path . 'PMC2776723.expected'
 		);
 
+		$provider[] = array(
+			'PMC5348191',
+			$path . 'PMC5348191.json',
+			$path . 'PMC5348191.xml',
+			$path . 'PMC5348191.expected'
+		);
+
 		return $provider;
 	}
 

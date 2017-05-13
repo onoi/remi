@@ -28,7 +28,7 @@ The recommended installation method for this library is to add the dependency to
 ```json
 {
 	"require": {
-		"onoi/remi": "~0.2"
+		"onoi/remi": "~0.4"
 	}
 }
 ```
@@ -44,13 +44,15 @@ $httpRequestFactory = new HttpRequestFactory()
 $filteredHttpResponseParserFactory = new FilteredHttpResponseParserFactory(
 	$httpRequestFactory->newCurlRequest()
 );
-
+```
+```php
 $crossRefFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newCrossRefFilteredHttpResponseParser(
 	new FilteredRecord()
 )
 
 $crossRefFilteredHttpResponseParser->doFilterResponseById( '10.1126/science.1152662' );
-
+```
+```php
 $filteredRecord = new FilteredRecord();
 $filteredRecord->setRedactedFields( array( 'pages', 'abstract' ) );
 
@@ -60,16 +62,14 @@ $pubMedFilteredHttpResponseParser = $filteredHttpResponseParserFactory->newNcbiP
 
 $pubMedFilteredHttpResponseParser->doFilterResponseById( '19782018' );
 ```
-The `FilteredHttpResponseParser` (implementing the `ResponseParser` interface) returns a
-simple `array` filtered from a REST response.
 
-`FilteredHttpResponseParser::doFilterResponseById` is not expected to make any input validation (in terms of
+* The `FilteredHttpResponseParser` (implementing the `ResponseParser` interface) returns a
+simple `array` filtered from a REST response.
+* `FilteredHttpResponseParser::doFilterResponseById` is not expected to make any input validation (in terms of
 format or range) for the requested response therefore the implementing class is responsible for an appropriate
 validation process.
-
-`FilteredRecord::setRedactedFields` can be used to remove selected fields from the record.
-
-It is further possible to invoke a `CachedCurlRequest` to avoid repeated requests to the same REST API url.
+* `FilteredRecord::setRedactedFields` can be used to remove selected fields from the record.
+* It is further possible to invoke a `CachedCurlRequest` to avoid repeated requests to the same REST API url.
 
 ## Contribution and support
 
@@ -85,13 +85,15 @@ The library provides unit tests that covers the core-functionality normally run 
 
 ### Release notes
 
-- 0.3 (2016-09-21)
- - Added some additional fields
-- 0.2 (2015-09-25)
- - Changed `ResponseParser` interface to clarify method names
-- 0.1 (2015-08-03) Initial release
- - Added `ResponseParser` interface
- - Added `FilteredHttpResponseParserFactory` to provide access to CrossRef, VIAF, PubMed, OCLC, and OpenLibrary REST API
+- 0.4.0 (2017-05-13)
+  - Changed HTTP to HTTPS for Ncbi resources
+- 0.3.0 (2016-09-21)
+  - Added some additional fields
+- 0.2.0 (2015-09-25)
+  - Changed `ResponseParser` interface to clarify method names
+- 0.1.0 (2015-08-03) Initial release
+  - Added `ResponseParser` interface
+  - Added `FilteredHttpResponseParserFactory` to provide access to CrossRef, VIAF, PubMed, OCLC, and OpenLibrary REST API
 
 ## License
 

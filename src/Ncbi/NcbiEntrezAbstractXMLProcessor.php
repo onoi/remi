@@ -74,7 +74,7 @@ class NcbiEntrezAbstractXMLProcessor {
 		}
 
 		foreach ( $domDocument->getElementsByTagName( 'abstract' ) as $item ) {
-			$this->filteredRecord->set( 'abstract', trim( $item->nodeValue ) );
+			$this->filteredRecord->set( 'abstract', preg_replace( '#\s{2,}#', ' ', trim( $item->nodeValue ) ) );
 		}
 
 		foreach ( $domDocument->getElementsByTagName( 'article' ) as $item ) {

@@ -18,8 +18,8 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 	 * @see http://www.ncbi.nlm.nih.gov/books/NBK25501/
 	 * @see http://www.ncbi.nlm.nih.gov/books/NBK1058/
 	 */
-	const SUMMARY_URL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?";
-	const FETCH_URL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?";
+	const SUMMARY_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?";
+	const FETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?";
 
 	/**
 	 * @since 0.1
@@ -137,7 +137,9 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 
 		$this->httpRequest->setOption( CURLOPT_RETURNTRANSFER, true ); // put result into variable
 		$this->httpRequest->setOption( CURLOPT_FAILONERROR, true );
+
 		$this->httpRequest->setOption( CURLOPT_URL, self::SUMMARY_URL );
+		$this->httpRequest->setOption( CURLOPT_SSL_VERIFYPEER, false );
 
 		$this->httpRequest->setOption( CURLOPT_HTTPHEADER, array(
 			'Accept: application/sparql-results+json, application/rdf+json, application/json',
@@ -165,7 +167,9 @@ class NcbiPubMedFilteredHttpResponseParser extends FilteredHttpResponseParser {
 
 		$this->httpRequest->setOption( CURLOPT_RETURNTRANSFER, true ); // put result into variable
 		$this->httpRequest->setOption( CURLOPT_FAILONERROR, true );
+
 		$this->httpRequest->setOption( CURLOPT_URL, self::FETCH_URL );
+		$this->httpRequest->setOption( CURLOPT_SSL_VERIFYPEER, false );
 
 		$this->httpRequest->setOption( CURLOPT_HTTPHEADER, array(
 			'Accept: application/sparql-results+xml, application/rdf+xml, application/xml',
